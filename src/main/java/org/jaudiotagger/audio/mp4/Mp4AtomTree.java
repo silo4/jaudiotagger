@@ -16,8 +16,8 @@ import org.jaudiotagger.audio.mp4.atom.Mp4MetaBox;
 import org.jaudiotagger.audio.mp4.atom.Mp4StcoBox;
 import org.jaudiotagger.audio.mp4.atom.NullPadding;
 import org.jaudiotagger.logging.ErrorMessage;
-import org.jaudiotagger.utils.tree.DefaultMutableTreeNode;
-import org.jaudiotagger.utils.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  * Tree representing atoms in the mp4 file

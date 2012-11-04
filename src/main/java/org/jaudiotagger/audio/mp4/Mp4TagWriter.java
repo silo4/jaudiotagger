@@ -24,6 +24,8 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.logging.Logger;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.CannotWriteException;
 import org.jaudiotagger.audio.mp4.atom.Mp4BoxHeader;
@@ -36,7 +38,6 @@ import org.jaudiotagger.tag.Tag;
 import org.jaudiotagger.tag.TagOptionSingleton;
 import org.jaudiotagger.tag.mp4.Mp4Tag;
 import org.jaudiotagger.tag.mp4.Mp4TagCreator;
-import org.jaudiotagger.utils.tree.DefaultMutableTreeNode;
 
 /**
  * Writes metadata from mp4, the metadata tags are held under the ilst atom as shown below, (note all free atoms are
