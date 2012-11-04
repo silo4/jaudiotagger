@@ -584,7 +584,7 @@ public class M4aWriteTagTest extends TestCase {
 	 */
 	public void testWriteFileMuchLargerSize() {
 		Exception exceptionCaught = null;
-		try {
+		try (final RandomAccessFile imageFile = new RandomAccessFile(AbstractTestCase.dataPath.resolve("coverart.png").toFile(), "r")) {
 			final Path testFile = AbstractTestCase.copyAudioToTmp("test.m4a", Paths.get("testWriteFileMuchLargerSize.m4a"));
 
 			// Starting filesize
@@ -594,7 +594,6 @@ public class M4aWriteTagTest extends TestCase {
 			Mp4Tag tag = (Mp4Tag) f.getTag();
 
 			// Add new image
-			final RandomAccessFile imageFile = new RandomAccessFile(new File("testdata", "coverart.png"), "r");
 			final byte[] imagedata = new byte[(int) imageFile.length()];
 			imageFile.read(imagedata);
 			tag.addField(tag.createArtworkField(imagedata));

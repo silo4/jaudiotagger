@@ -61,7 +61,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -109,7 +108,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -157,7 +155,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -206,7 +203,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -258,7 +254,6 @@ public class Issue245Test extends AbstractTestCase {
 			tag = af.getTag();
 			assertEquals(0, tag.getArtworkList().size());
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -312,7 +307,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -362,7 +356,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -385,7 +378,6 @@ public class Issue245Test extends AbstractTestCase {
 			assertEquals(0, tag.getArtworkList().size());
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -401,7 +393,6 @@ public class Issue245Test extends AbstractTestCase {
 			tag.setField(newartwork);
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertNotNull(exceptionCaught);
@@ -417,7 +408,6 @@ public class Issue245Test extends AbstractTestCase {
 			af.commit();
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertNotNull(exceptionCaught);
@@ -439,7 +429,6 @@ public class Issue245Test extends AbstractTestCase {
 
 			assertEquals(0, tag.getArtworkList().size());
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -455,7 +444,6 @@ public class Issue245Test extends AbstractTestCase {
 			tag.setField(newartwork);
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertNotNull(exceptionCaught);
@@ -469,7 +457,6 @@ public class Issue245Test extends AbstractTestCase {
 			tag.deleteArtworkField();
 
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertNotNull(exceptionCaught);

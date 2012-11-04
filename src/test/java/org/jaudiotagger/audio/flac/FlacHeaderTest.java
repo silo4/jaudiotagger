@@ -2,6 +2,7 @@ package org.jaudiotagger.audio.flac;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import javax.imageio.ImageIO;
@@ -83,22 +84,23 @@ public class FlacHeaderTest extends TestCase {
 			assertEquals("coverart.gif", image.getImageUrl());
 
 			// Create Image Link
-			tag.getImages().add((MetadataBlockDataPicture) tag.createLinkedArtworkField("../testdata/coverart.jpg"));
+			String artworkTag = AbstractTestCase.dataPath.getFileName().toString() + "coverart.jpg";
+			tag.getImages().add((MetadataBlockDataPicture) tag.createLinkedArtworkField(artworkTag));
 			f.commit();
 			f = AudioFileIO.read(testFile);
 			image = tag.getImages().get(2);
 			assertEquals(3, image.getPictureType());
 			assertEquals("-->", image.getMimeType());
 			assertTrue(image.isImageUrl());
-			assertEquals("../testdata/coverart.jpg", Utils.getString(image.getImageData(), 0, image.getImageData().length, TextEncoding.CHARSET_ISO_8859_1));
-			assertEquals("../testdata/coverart.jpg", image.getImageUrl());
+			assertEquals(artworkTag, Utils.getString(image.getImageData(), 0, image.getImageData().length, TextEncoding.CHARSET_ISO_8859_1));
+			assertEquals(artworkTag, image.getImageUrl());
 
 			// Can we actually createField Buffered Image from the url of course remember url is relative to the audio
 			// file
 			// not where we run the program from
-			final File file = new File("testdatatmp", image.getImageUrl());
-			assertTrue(file.exists());
-			final BufferedImage bi = ImageIO.read(file);
+			final Path file = AbstractTestCase.dataTempPath.resolve(image.getImageUrl());
+			assertTrue("file: " + file, Files.exists(file));
+			final BufferedImage bi = ImageIO.read(Files.newInputStream(file));
 			assertEquals(200, bi.getWidth());
 			assertEquals(200, bi.getHeight());
 

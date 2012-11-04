@@ -452,7 +452,7 @@ public class ID3v24Tag extends AbstractID3v2Tag {
 	 */
 	public ID3v24Tag(final AbstractTag mp3tag) {
 		logger.config("Creating tag from a tag of a different version");
-		frameMap = new LinkedHashMap();
+		frameMap = new LinkedHashMap<String, Object>();
 		encryptedFrameMap = new LinkedHashMap();
 
 		if (mp3tag != null)

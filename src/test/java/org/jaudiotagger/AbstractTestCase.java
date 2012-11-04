@@ -198,7 +198,7 @@ public abstract class AbstractTestCase extends TestCase {
 	 */
 	public static Path copyAudioToTmp(final String tagfile, final String fileName) {
 		final Path inputTagFile = tagsPath.resolve(tagfile);
-		final Path inputFile = dataTempPath.resolve(fileName);
+		final Path inputFile = dataPath.resolve(fileName);
 		final Path outputFile = dataTempPath.resolve(fileName);
 		if (!Files.exists(outputFile.getParent()))
 			outputFile.getParent().toFile().mkdirs();

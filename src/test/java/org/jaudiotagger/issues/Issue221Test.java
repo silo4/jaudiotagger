@@ -1,7 +1,5 @@
 package org.jaudiotagger.issues;
 
-import java.io.FileOutputStream;
-
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.id3.ID3v22Tag;
@@ -21,7 +19,6 @@ public class Issue221Test extends AbstractTestCase {
 			final Mp4Tag tag = new Mp4Tag();
 			tag.setField(FieldKey.TITLE, null);
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -33,7 +30,6 @@ public class Issue221Test extends AbstractTestCase {
 			final VorbisCommentTag tag = VorbisCommentTag.createNewTag();
 			tag.setField(FieldKey.TITLE, null);
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -44,11 +40,8 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.TITLE, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
+			
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -59,11 +52,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.ALBUM, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -74,11 +63,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.ARTIST, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -89,11 +74,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.COMMENT, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -104,11 +85,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.GENRE, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertTrue(exceptionCaught instanceof IllegalArgumentException);
@@ -119,11 +96,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v23Tag tag = new ID3v23Tag();
 			tag.setField(FieldKey.TRACK, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v23.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 		assertNull(exceptionCaught);
@@ -135,11 +108,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v24Tag tag = new ID3v24Tag();
 			tag.setField(FieldKey.TITLE, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v24.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 
@@ -151,11 +120,7 @@ public class Issue221Test extends AbstractTestCase {
 		try {
 			final ID3v22Tag tag = new ID3v22Tag();
 			tag.setField(FieldKey.TITLE, null);
-			final FileOutputStream os = new FileOutputStream("testdatatmp/issue_221_title_v24.mp3");
-			tag.write(os.getChannel());
-			os.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
 			exceptionCaught = e;
 		}
 

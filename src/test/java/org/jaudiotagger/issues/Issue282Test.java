@@ -32,7 +32,7 @@ public class Issue282Test extends AbstractTestCase {
 			assertTrue(result);
 
 			// make Relative
-			assertTrue(outputFile.toFile().exists());
+			assertTrue(Files.exists(outputFile));
 			// Read File okay
 			final AudioFile af = AudioFileIO.read(outputFile);
 			System.out.println(af.getTag().toString());
@@ -68,13 +68,13 @@ public class Issue282Test extends AbstractTestCase {
 			assertTrue(result);
 
 			// make Relative
-			assertTrue(outputFile.toFile().exists());
+			assertTrue(Files.exists(outputFile));
 			// Read File okay
 			final AudioFile af = AudioFileIO.read(outputFile);
 
 			// Create tag and Change File
 			af.getTagOrCreateAndSetDefault();
-			af.getTag().setField(ArtworkFactory.createArtworkFromFile(Paths.get("testdata/coverart.jpg")));
+			af.getTag().setField(ArtworkFactory.createArtworkFromFile(AbstractTestCase.dataPath.resolve("coverart.jpg")));
 			af.commit();
 
 		} catch (final Exception e) {

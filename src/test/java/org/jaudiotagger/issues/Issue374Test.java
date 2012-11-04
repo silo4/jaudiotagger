@@ -1,9 +1,11 @@
 package org.jaudiotagger.issues;
 
 import java.io.File;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 
 import org.jaudiotagger.AbstractTestCase;
 import org.jaudiotagger.audio.AudioFile;
@@ -19,10 +21,11 @@ import org.jaudiotagger.tag.images.ArtworkFactory;
  */
 public class Issue374Test extends AbstractTestCase {
 	public void testIssue() throws Exception {
-		final Path testdatadir = Paths.get("testdata");
 		int count = 0;
-		for (final File nextFile : testdatadir.toFile().listFiles(new MP3FileFilter())) {
-			final Path next = nextFile.toPath();
+		DirectoryStream<Path> dirStream = Files.newDirectoryStream(AbstractTestCase.dataPath, new MP3FileFilter());
+		Iterator<Path> dirIterator = dirStream.iterator();
+		while(dirIterator.hasNext()) {
+			final Path next = dirIterator.next();
 			count++;
 			System.out.println("Checking:" + next.getFileName());
 			Exception caught = null;
@@ -60,15 +63,16 @@ public class Issue374Test extends AbstractTestCase {
 
 			} catch (final Exception e) {
 				caught = e;
-				e.printStackTrace();
 				assertNull(caught);
 			}
 		}
+		if (dirStream != null)
+			dirStream.close();
 		System.out.println("Checked " + count + " files");
 
 	}
 
-	final class MP3FileFilter implements java.io.FileFilter {
+	final class MP3FileFilter implements DirectoryStream.Filter<Path> {
 
 		/**
 		 * allows Directories
@@ -102,11 +106,15 @@ public class Issue374Test extends AbstractTestCase {
 		 * @return true if this file or directory should be accepted
 		 */
 		@Override
-		public final boolean accept(final File file) {
-			if (file.getName().equals("corrupt.mp3") || file.getName().equals("Issue79.mp3") || file.getName().equals("test22.mp3") || file.getName().equals("test92.mp3") || file.getName().equals("Issue81.mp3"))
+		public final boolean accept(final Path file) {
+			if (file.getFileName().toString().equals("corrupt.mp3") ||
+					file.getFileName().toString().equals("Issue79.mp3") ||
+					file.getFileName().toString().equals("test22.mp3") ||
+					file.getFileName().toString().equals("test92.mp3") ||
+					file.getFileName().toString().equals("Issue81.mp3"))
 				return false;
 
-			return (((file.getName()).toLowerCase().endsWith(".mp3")) || (file.isDirectory() && (this.allowDirectories)));
+			return ((file.getFileName().toString().toLowerCase().endsWith(".mp3")) || (Files.isDirectory(file) && (this.allowDirectories)));
 		}
 
 	}
